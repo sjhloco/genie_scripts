@@ -2,14 +2,16 @@
 testbed:
   name: bgp_testbed
 
-  tacacs:
-    username: admin
-  passwords:
-    tacacs: ansible
+  credentials:
+    default:
+      username: admin
+      password: ansible
+    enable:
+      password: ansible
 
 devices:
   DC1-CSR-XNET1:
-    alias: csr1000v
+    alias: xnet1
     os: iosxe
     type: CSR1000v
     connections:
@@ -18,3 +20,69 @@ devices:
       vty:
         protocol: ssh
         ip: 10.10.108.17
+
+  DC1-N9K-SPINE1:
+    alias: spine1
+    os: nxos
+    type: N9K
+    connections:
+      defaults:
+        class: unicon.Unicon
+      vty:
+        protocol: ssh
+        ip: 10.10.108.11
+
+  DC1-N9K-SPINE2:
+    alias: spine2
+    os: nxos
+    type: N9K
+    connections:
+      defaults:
+        class: unicon.Unicon
+      vty:
+        protocol: ssh
+        ip: 10.10.108.12
+
+  DC1-N9K-LEAF1:
+    alias: leaf1
+    os: nxos
+    type: N9K
+    connections:
+      defaults:
+        class: unicon.Unicon
+      vty:
+        protocol: ssh
+        ip: 10.10.108.13
+
+  DC1-N9K-LEAF2:
+    alias: leaf2
+    os: nxos
+    type: N9K
+    connections:
+      defaults:
+        class: unicon.Unicon
+      vty:
+        protocol: ssh
+        ip: 10.10.108.14
+
+  DC1-N9K-BORDER1:
+    alias: border1
+    os: nxos
+    type: N9K
+    connections:
+      defaults:
+        class: unicon.Unicon
+      vty:
+        protocol: ssh
+        ip: 10.10.108.15
+
+  DC1-VIOS-SW1:
+    alias: dmz-sw1
+    os: ios
+    type: VIOS
+    connections:
+      defaults:
+        class: unicon.Unicon
+      vty:
+        protocol: ssh
+        ip: 10.10.108.18
